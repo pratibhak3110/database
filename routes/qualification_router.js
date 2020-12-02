@@ -3,6 +3,17 @@ var router= express.Router();
 var qualification= require('../Models/Qualification');
 
 router.get('/', function(req,res, next){
+    if(req.params.id2){
+        qualification.getQualificationById(req.params.id2, function(err,rows){
+            if(err){
+                res.json(err);
+            }
+            else{
+                res.json(rows);
+            }
+        });
+    }
+    else{
     qualification.getAllQualification(function(err, rows){
         if(err){
             res.json(err);
@@ -11,6 +22,7 @@ router.get('/', function(req,res, next){
             res.json(rows);
         }
     }); 
+}
 });
 
 
@@ -26,8 +38,8 @@ router.post('/',function(req,res,next){
 });
 
 
-router.delete('/:id', function(req,res,next){
-    qualification.deleteQualification(req.params.id, function(err,rows){
+router.delete('/:id2', function(req,res,next){
+    qualification.deleteQualification(req.params.id2, function(err,rows){
         if(err){
             res.json(err);
         }
@@ -37,8 +49,8 @@ router.delete('/:id', function(req,res,next){
     });
 });
 
-router.put('/:id',function(req,res,next){
-    qualification.updateQualification(req.params.id, function(err,rows){
+router.put('/:id2',function(req,res,next){
+    qualification.updateQualification(req.params.id2, function(err,rows){
         if(err){
             res.json(err);
         }

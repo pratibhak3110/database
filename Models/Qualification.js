@@ -5,18 +5,22 @@ var Qualification={
     getAllQualification: function(callback){
         return db.query('select * from qualification', callback);
     },
+    getQualificationById: function(id, callback){
+        return db.query('select * from qualification where emp_id=?',[id], callback);
+    },
 
     addQualification: function(qualification,callback){
-        return db.query('insert into qualification values(?,?,?,?,?)', 
-        [qualification.degree, qualification.institute,
+        return db.query('INSERT INTO `qualification`(`emp_id`, `degree`, `institute`, `pyear`, `score`, `area`) VALUES(?,?,?,?,?,?)', 
+        [
+           qualification.emp_id, qualification.degree, qualification.institute,
             qualification.pyear,qualification.score,
             qualification.area], callback);
     },
     deleteQualification: function(id,callback){
-        return db.query('delete from qualification where Id=?',[id],callback);
+        return db.query('delete from qualification where emp_id=?',[id],callback);
     },
     updateQualification: function(id,qualification,callback){
-        return db.query('update qualification set degree=?, institute=?, pyear=?, score=?,area=? where Id=?',
+        return db.query('update qualification set degree=?, institute=?, pyear=?, score=?,area=? where emp_id=?',
         [qualification.degree, qualification.institute,
             qualification.pyear,qualification.score,
             qualification.area], callback); 
