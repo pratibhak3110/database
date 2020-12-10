@@ -6,6 +6,10 @@ var PrevEmp={
         return db.query('select * from prevemp', callback);
     },
 
+    getAllEmpById: function(id3,callback){
+        return db.query('select * from prevemp where emp_id=?',[id3], callback);
+    },
+
     addPrevEmp: function(prevemp,callback){
         return db.query('INSERT INTO `prevemp`(`emp_id`, `fdate`, `tdate`, `companynm`, `designation`, `rexp`, `nrexp`) VALUES (?,?,?,?,?,?,?)', 
         [
@@ -14,14 +18,14 @@ var PrevEmp={
             prevemp.rexp,prevemp.nrexp,
            ], callback);
     },
-    deletePrevEmp: function(id,callback){
-        return db.query('delete from prevemp where emp_id=?',[id],callback);
+    deletePrevEmp: function(id3,callback){
+        return db.query('delete from prevemp where emp_id=?',[id3],callback);
     },
-    updatePrevEmp: function(id,prevemp,callback){
-        return db.query('update prevemp set fdate=?, tdate=?, companynm=?, designation=?,rexp=?,nrexp=? where emp_id=?',
+    updatePrevEmp: function(eid,prevemp,callback){
+        return db.query('UPDATE `prevemp` SET `fdate`=?,`tdate`=?,`companynm`=?,`designation`=?,`rexp`=?,`nrexp`=? WHERE `emp_id`=? AND `Id`=?',
         [prevemp.fdate, prevemp.tdate,
             prevemp.companynm,prevemp.designation,
-            prevemp.rexp,prevemp.nrexp], callback); 
+            prevemp.rexp,prevemp.nrexp,eid, prevemp.Id], callback); 
     }
 };
 
