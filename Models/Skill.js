@@ -16,8 +16,8 @@ var Skill={
             skill.level,skill.current,
             skill.experience], callback);
     },
-    deleteSkill: function(id,callback){
-        return db.query('delete from skill where emp_id=?',[id],callback);
+    deleteSkill: function(id4,callback){
+        return db.query('delete from skill where emp_id=?',[id4],callback);
     },
     updateSkill: function(sid,skill,callback){
         return db.query('UPDATE `skill` SET `category`=?,`skill`=?,`level`=?,`current`=?,`experience`=? WHERE `emp_id`=? AND `Id`=?',

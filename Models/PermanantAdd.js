@@ -5,8 +5,8 @@ var PermanantAdd={
     getAllPermanantAdd: function(callback){
         return db.query('select * from permanantadd', callback);
     },
-    getAllPermanantAddById: function(id, callback){
-        return db.query('select * from permanantadd where emp_id=?',[id], callback);
+    getAllPermanantAddById: function(id1, callback){
+        return db.query('select * from permanantadd where emp_id=?',[id1], callback);
     },
 
     addPermanantAdd: function(permanantadd,callback){
@@ -24,8 +24,8 @@ var PermanantAdd={
             permanantadd.pphone1,permanantadd.pphone2,
             permanantadd.pfax,permanantadd.pmobile], callback);
     },
-    deletePermanantAdd: function(id,callback){
-        return db.query('delete from permanantadd where emp_id=?',[id],callback);
+    deletePermanantAdd: function(id1,callback){
+        return db.query('delete from permanantadd where emp_id=?',[id1],callback);
     },
     updatePermanantAdd: function(pid,permanantadd,callback){
         return db.query('update permanantadd set permanantadd=?,city=?,country=?,state=?,district=?,pincode=?,phone1=?,phone2=?,fax=?,mobile=?,presentadd=?,pcity=?,pcountry=?,pstate=?,pdistrict=?,ppincode=?,pphone1=?,pphone2=?,pfax=?,pmobile=? where emp_id=?',

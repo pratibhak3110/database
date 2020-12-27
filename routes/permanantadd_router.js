@@ -2,10 +2,10 @@ var express= require('express');
 var router= express.Router();
 var permanantadd= require('../Models/PermanantAdd');
 
-router.get('/:id3?', function(req,res, next){
+router.get('/:id1?', function(req,res, next){
 
-    if(req.params.id3){
-        permanantadd.getAllPermanantAddById(req.params.id3, function(err,rows){
+    if(req.params.id1){
+        permanantadd.getAllPermanantAddById(req.params.id1, function(err,rows){
             if(err){
                 res.json(err);
             }
@@ -39,8 +39,8 @@ router.post('/',function(req,res,next){
 });
 
 
-router.put('/:id3', function(req,res,next){
-    permanantadd.updatePermanantAdd(req.params.id3, req.body, function(err,rows){
+router.put('/:id1', function(req,res,next){
+    permanantadd.updatePermanantAdd(req.params.id1, req.body, function(err,rows){
         if(err){
             res.json(err);
         }
@@ -50,8 +50,8 @@ router.put('/:id3', function(req,res,next){
     });
 });
 
-router.delete('/:id3', function(req,res,next){
-    permanantadd.deletePermanantAdd(req.params.id3, function(err,rows){
+router.delete('/:id1', function(req,res,next){
+    permanantadd.deletePermanantAdd(req.params.id1, function(err,rows){
         if(err){
             res.json(err);
         }
